@@ -278,7 +278,9 @@ INSERT INTO restaurants (name, district_id, address, description, price, opening
     ('Maple Tree House Yeouido', 20, '36 Gukjegeumyung-ro 8-gil, Yeongdeungpo-gu', 'Korean BBQ near business district', 68000, '11:30-23:00', NULL),
     ('Black Pig Jeju', 1, '614 Gangnam-daero, Gangnam-gu', 'Jeju black pork BBQ', 42000, '11:00-23:00', NULL),
     ('Congdu Pork Belly', 13, '34 Yanghwa-ro 16-gil, Mapo-gu', 'Premium pork belly restaurant', 18000, '17:00-02:00', NULL),
-    ('Seoul Samgyetang', 23, '85-1 Samil-daero 30-gil, Jongno-gu', 'Ginseng chicken soup specialty', 16000, '10:00-22:00', 'Tuesday');
+    ('Seoul Samgyetang', 23, '85-1 Samil-daero 30-gil, Jongno-gu', 'Ginseng chicken soup specialty', 16000, '10:00-22:00', 'Tuesday'),
+    ('Dongbaekseom', 1, '25 Apgujeong-ro 10-gil, Gangnam-gu', 'Authentic Korean seafood restaurant with fresh catch daily', 72000, '11:00-22:00', NULL),
+    ('Le Chamber Seoul', 13, '45 Wausan-ro 21-gil, Mapo-gu', 'French fine dining with Korean seasonal ingredients', 135000, '18:00-22:30', 'Monday');
 
 -- 7. Insert restaurant_cuisines (N:M mapping, ~300 rows)
 INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
