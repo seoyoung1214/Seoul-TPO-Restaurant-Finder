@@ -1,18 +1,6 @@
 -- Seoul TPO Restaurant Finder Database Schema
 -- Team: team12
 
--- Drop existing tables if they exist (for clean installation)
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS reviews;
-DROP TABLE IF EXISTS restaurant_cuisines;
-DROP TABLE IF EXISTS restaurants;
-DROP TABLE IF EXISTS cuisines;
-DROP TABLE IF EXISTS districts;
-DROP TABLE IF EXISTS occasions;
-DROP TABLE IF EXISTS time_slots;
-DROP TABLE IF EXISTS users;
-SET FOREIGN_KEY_CHECKS = 1;
-
 -- Create database if not exists
 CREATE DATABASE IF NOT EXISTS team12 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE team12;
