@@ -281,7 +281,7 @@ INSERT INTO restaurants (name, district_id, address, description, price, opening
     ('Seoul Samgyetang', 23, '85-1 Samil-daero 30-gil, Jongno-gu', 'Ginseng chicken soup specialty', 16000, '10:00-22:00', 'Tuesday');
 
 -- 7. Insert restaurant_cuisines (N:M mapping, ~300 rows)
-INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id)
+INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
     (1, 1), (2, 1), (3, 11), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1), (9, 1), (10, 1),
     (11, 1), (12, 11), (13, 4), (14, 11), (15, 11), (16, 5), (17, 1), (18, 20), (19, 2), (20, 17),
     (21, 11), (22, 1), (23, 1), (24, 1), (25, 2), (26, 10), (27, 14), (28, 20), (29, 15), (30, 15),
@@ -296,9 +296,9 @@ INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id)
 -- Add secondary cuisines for some restaurants
 INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
     (1, 19), (2, 19), (8, 6), (11, 6), (16, 19), (17, 19), (19, 17), (20, 1),
-    (22, 19), (26, 1), (31, 1), (32, 19), (33, 1), (34, 5), (46, 4), (48, 6),
+    (22, 19), (26, 1), (31, 1), (32, 19), (33, 1), (34, 5), (46, 1), (48, 6),
     (51, 16), (53, 1), (54, 1), (66, 19), (67, 4), (75, 1), (79, 1), (87, 17),
-    (91, 6), (92, 17), (93, 1), (94, 6), (95, 6), (98, 1);
+    (91, 6), (92, 17), (93, 2), (94, 6), (95, 6), (98, 1);
 
 -- 8. Insert reviews (850+ rows for comprehensive analysis)
 INSERT INTO reviews (user_id, restaurant_id, occasion_id, time_slot_id, rating_score, spend_amount, comment)
