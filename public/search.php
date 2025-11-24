@@ -31,6 +31,8 @@ $weekend_only = $_GET['weekend_only'] ?? '';
     <form class="card p-4 mb-4" method="GET">
 
         <div class="row mb-3">
+
+             <!-- 구 선택 (드롭다운) -->
             <div class="col-md-3">
                 <label class="form-label">지역(구)</label>
                 <select name="district" class="form-select">
@@ -47,22 +49,25 @@ $weekend_only = $_GET['weekend_only'] ?? '';
                 </select>
             </div>
 
+            <!-- 음식 종류 선택 (라디오) -->
             <div class="col-md-3">
-                <label class="form-label">음식 종류</label>
-                <select name="cuisine" class="form-select">
-                    <option value="">전체</option>
-                    <?php
-                    $sql = "SELECT cuisine_id, cuisine_name FROM cuisines ORDER BY cuisine_name";
-                    $result = $conn->query($sql);
-
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        $selected = ($cuisine == $row['cuisine_id']) ? "selected" : "";
-                        echo "<option value='{$row['cuisine_id']}' $selected>{$row['cuisine_name']}</option>";
-                    }
-                    ?>
-                </select>
+                <label class="form-label">음식 종류</label><br>
+                <?php
+                $sql = "SELECT cuisine_id, cuisine_name FROM cuisines ORDER BY cuisine_name";
+                foreach ($conn->query($sql) as $row) {
+                    $checked = ($cuisine == $row['cuisine_id']) ? "checked" : "";
+                    echo "
+                        <label class='me-2'>
+                            <input type='radio' name='cuisine' value='{$row['cuisine_id']}' $checked>
+                            {$row['cuisine_name']}
+                        </label>
+                    ";
+                }
+                ?>
+                <label class="ms-2"><input type="radio" name="cuisine" value="" <?= ($cuisine==''?'checked':'') ?>> 전체</label>
             </div>
-
+            
+            <!-- 시간대(드롭다운) -->
             <div class="col-md-3">
                 <label class="form-label">시간대</label>
                 <select name="time_slot" class="form-select">
@@ -79,35 +84,46 @@ $weekend_only = $_GET['weekend_only'] ?? '';
                 </select>
             </div>
 
+            <!-- 자리/목적 선택 (라디오)-->
             <div class="col-md-3">
-                <label class="form-label">자리/목적</label>
-                <select name="occasion" class="form-select">
-                    <option value="">전체</option>
-                    <?php
-                    $sql = "SELECT occasion_id, occasion_name FROM occasions ORDER BY occasion_name";
-                    $result = $conn->query($sql);
-
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        $selected = ($occasion == $row['occasion_id']) ? "selected" : "";
-                        echo "<option value='{$row['occasion_id']}' $selected>{$row['occasion_name']}</option>";
-                    }
-                    ?>
-                </select>
+                <label class="form-label">자리/목적</label><br>
+                <?php
+                $sql = "SELECT occasion_id, occasion_name FROM occasions ORDER BY occasion_name";
+                foreach ($conn->query($sql) as $row) {
+                    $checked = ($occasion == $row['occasion_id']) ? "checked" : "";
+                    echo "
+                        <label class='me-2'>
+                            <input type='radio' name='occasion' value='{$row['occasion_id']}' $checked>
+                            {$row['occasion_name']}
+                        </label>
+                    ";
+                }
+                ?>
+                <label class="ms-2"><input type="radio" name="occasion" value="" <?= ($occasion==''?'checked':'') ?>> 전체</label>
             </div>
+
         </div>
 
-        <!-- 가격 슬라이더 -->
         <div class="mb-3">
-            <label class="form-label">예산: 최대 <strong><?= number_format($max_price) ?></strong> 원</label>
-            <input type="range" class="form-range" name="max_price" min="10000" max="400000" step="5000"
+            <label class="form-label">예산 상한</label>
+
+            <!-- 슬라이더 -->
+            <input type="range" class="form-range" name="max_price"
+                   min="10000" max="400000" step="5000"
                    value="<?= $max_price ?>">
         </div>
 
-        <!-- 체크박스 -->
+        <!-- 평점 4 이상 보기 (체크박스) -->
         <div class="mb-3 form-check">
             <input class="form-check-input" type="checkbox" name="rating_check" value="1"
                 <?= ($rating_check == "1") ? "checked" : "" ?>>
             <label class="form-check-label">평점 4.0 이상만 보기</label>
+        </div>
+        <!-- 주말만 보기 필터 (체크박스) -->
+        <div class="mb-4 form-check">
+            <input class="form-check-input" type="checkbox" name="weekend_only" value="1"
+                <?= ($weekend_only == "1") ? "checked" : "" ?>>
+            <label class="form-check-label">주말만 보기</label>
         </div>
 
         <button type="submit" class="btn btn-primary">검색</button>
@@ -158,6 +174,10 @@ $weekend_only = $_GET['weekend_only'] ?? '';
 
         if ($rating_check) {
             $query .= " AND r.avg_rating >= 4.0 ";
+        }
+
+        if ($weekend_only) {
+            $query .= " AND DAYOFWEEK(rv.created_at) IN (1,7) ";
         }
 
         $query .= " AND r.price <= :max_price ";

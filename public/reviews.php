@@ -65,7 +65,7 @@ session_start();
                     <div class='mt-2'>
                         <a href='review_edit.php?review_id={$row['review_id']}' class='btn btn-sm btn-outline-primary'>수정</a>
                         <a href='review_delete.php?review_id={$row['review_id']}' class='btn btn-sm btn-outline-danger'
-                           onclick='return confirm(\"정말 삭제할까요?\")'>삭제</a>
+                           onclick='return confirm(\"리뷰를 삭제할까요?\")'>삭제</a>
                     </div>
                 ";
             }
