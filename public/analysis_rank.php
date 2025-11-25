@@ -18,7 +18,7 @@ $limit = 10;
 
 $results = [];
 
-// 조건 검사: T, P, O 세 가지가 모두 있을 때 쿼리 실행 
+// 조건 검사: T, P, O 세 가지가 모두 있을 때 쿼리 실행
 if ($district_id && $occasion_id && $time_slot_id) { 
     $sql = "
         WITH RankedRestaurants AS (

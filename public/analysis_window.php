@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// $pdo 객체 할당
+// $pdo 객체 할당 
 $pdo = getDB();
 
 // 1. 사용자 입력 받기

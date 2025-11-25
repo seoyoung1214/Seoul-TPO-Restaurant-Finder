@@ -5,7 +5,6 @@
  */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-// 이후 원래 DB 연결 로직 시작 (에러확인용)
 
 require_once __DIR__ . '/config.php';
 
