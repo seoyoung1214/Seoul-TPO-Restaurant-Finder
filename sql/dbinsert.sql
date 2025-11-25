@@ -306,7 +306,7 @@ INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
     (91, 6), (92, 17), (93, 2), (94, 6), (95, 6), (98, 1);
 
 -- 8. Insert reviews (850+ rows for comprehensive analysis)
-INSERT INTO reviews (user_id, restaurant_id, occasion_id, time_slot_id, rating_score, spend_amount, comment)
+INSERT INTO reviews (user_id, restaurant_id, occasion_id, time_slot_id, rating_score, spend_amount, comment, visit_time)
 SELECT 
     ((n % 100) + 1) as user_id,
     ((n % 100) + 1) as restaurant_id,
@@ -345,7 +345,8 @@ SELECT
         WHEN n % 15 = 12 THEN 'Great for business meetings. Professional setting.'
         WHEN n % 15 = 13 THEN 'Solo dining friendly. Good food at reasonable prices.'
         ELSE 'Enjoyable experience overall. Would visit again.'
-    END as comment
+    END as comment,
+    DATE_SUB(NOW(), INTERVAL (n % 365) DAY) as visit_time 
 FROM (
     SELECT a.n + b.n * 10 + c.n * 100 as n
     FROM 

@@ -74,6 +74,7 @@ CREATE TABLE reviews (
     spend_amount     INT UNSIGNED NOT NULL,
     comment          TEXT,
     created_at       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    visit_time       DATETIME NOT NULL,
     FOREIGN KEY (user_id)       REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id) ON DELETE CASCADE,
     FOREIGN KEY (occasion_id)   REFERENCES occasions(occasion_id) ON DELETE CASCADE,
