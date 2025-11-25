@@ -10,8 +10,6 @@ if (session_status() == PHP_SESSION_NONE) {
 // $pdo 객체 할당
 $pdo = getDB();
 
-
-
 // 1. 사용자 입력 받기 (수정)
 $district_id = $_GET['district'] ?? null;
 $occasion_id = $_GET['occasion'] ?? null;
@@ -20,7 +18,7 @@ $limit = 10;
 
 $results = [];
 
-// 조건 검사: T, P, O 세 가지가 모두 있을 때 쿼리 실행
+// 조건 검사: T, P, O 세 가지가 모두 있을 때 쿼리 실행 
 if ($district_id && $occasion_id && $time_slot_id) { 
     $sql = "
         WITH RankedRestaurants AS (

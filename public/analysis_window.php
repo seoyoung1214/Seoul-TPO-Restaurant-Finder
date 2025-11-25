@@ -1,5 +1,5 @@
 <?php
-// db.php 파일 include (PDO 연결 객체 $pdo를 사용한다고 가정)
+// db.php 파일 include (PDO 연결 객체 $pdo를 사용한다고 가정) 
 require_once '../config/db.php';
 
 // header.php가 없으므로 세션을 직접 시작합니다.
