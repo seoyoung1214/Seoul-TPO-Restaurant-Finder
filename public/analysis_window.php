@@ -10,6 +10,12 @@ if (session_status() == PHP_SESSION_NONE) {
 // $pdo 객체 할당 
 $pdo = getDB();
 
+// =================================================================
+// 1. 드롭다운 메뉴에 사용할 레스토랑 목록 데이터 조회 (추가된 로직)
+// =================================================================
+$restaurants = $pdo->query("SELECT restaurant_id, name FROM restaurants ORDER BY name")->fetchAll(PDO::FETCH_ASSOC);
+
+
 // 1. 사용자 입력 받기
 // ?? '' (Null coalescing operator)를 사용하여 $_GET 값이 없을 때 null 대신 빈 문자열로 초기화하여 Warning을 방지합니다.
 $restaurant_id = $_GET['restaurant_id'] ?? null;
@@ -60,7 +66,6 @@ if ($restaurant_id) {
 
     } catch (PDOException $e) {
         // SQL 쿼리 실행 실패 시 (예: DB 연결이 끊긴 경우)
-        // 실제 프로젝트에서는 사용자에게 오류를 보여주지 않습니다.
         $results = [];
         $error_message = "쿼리 실행 중 오류 발생: " . $e->getMessage();
     }
@@ -76,7 +81,7 @@ if ($restaurant_id) {
         body { font-family: Arial, sans-serif; padding: 20px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type="number"] { padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="number"], select { padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 4px; }
         button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
         table { border-collapse: collapse; width: 100%; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
@@ -93,15 +98,22 @@ if ($restaurant_id) {
 <form method="GET" action="analysis_window.php">
     
     <div class="form-group">
-        <label for="restaurant_id">레스토랑 ID:</label>
-        <input type="number" id="restaurant_id" name="restaurant_id" required placeholder="분석할 레스토랑 ID (예: 1)" 
-               value="<?php echo htmlspecialchars($restaurant_id ?? ''); ?>">
+        <label for="restaurant_id">레스토랑 이름:</label>
+        <select id="restaurant_id" name="restaurant_id" required>
+            <option value="">-- 레스토랑 선택 --</option>
+            <?php foreach ($restaurants as $res): ?>
+                <option value="<?php echo htmlspecialchars($res['restaurant_id']); ?>"
+                    <?php if ($restaurant_id == $res['restaurant_id']) echo 'selected'; ?>>
+                    <?php echo htmlspecialchars($res['name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
     <div class="form-group">
         <label for="window_size">윈도우 크기 (N):</label>
         <input type="number" id="window_size" name="window_size" required min="2" max="10" placeholder="평균을 낼 리뷰 수 (예: 5)" 
-               value="<?php echo htmlspecialchars($window_size ?? '5'); ?>">
+                value="<?php echo htmlspecialchars($window_size ?? '5'); ?>">
     </div>
 
     <button type="submit">이동 평균 분석 실행</button>

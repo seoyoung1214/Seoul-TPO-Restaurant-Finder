@@ -18,6 +18,19 @@ $pdo = getDB();
 // user_id가 1번인 'kim_minjun' 사용자를 임시로 설정합니다.
 $_SESSION['user_id'] = 1;
 
+
+// =======================================================
+// 0. 드롭다운 메뉴에 사용할 데이터 조회 (추가된 로직)
+// =======================================================
+
+// 0.1. 레스토랑 목록 조회
+$restaurants = $pdo->query("SELECT restaurant_id, name FROM restaurants ORDER BY name")->fetchAll(PDO::FETCH_ASSOC);
+// 0.2. 목적 목록 조회
+$occasions = $pdo->query("SELECT occasion_id, occasion_name FROM occasions ORDER BY occasion_name")->fetchAll(PDO::FETCH_ASSOC);
+// 0.3. 시간대 목록 조회
+$time_slots = $pdo->query("SELECT time_slot_id, time_of_day FROM time_slots ORDER BY time_slot_id")->fetchAll(PDO::FETCH_ASSOC);
+
+
 // 1. 로그인 상태 확인 (세션 활용)
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -38,14 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // =======================================================
     // 3. 트랜잭션 시작
     // =======================================================
-    // 라인 38 이전에 추가
     if ($pdo === null) {
         die("디버그 체크: \$pdo 변수가 null입니다. db.php 파일을 확인하세요.");
     }
     if (!($pdo instanceof PDO)) {
         die("디버그 체크: \$pdo는 PDO 객체가 아닙니다. db.php 파일 확인 필수.");
     }
-    // 이 코드를 통과하면 $pdo->beginTransaction()이 실행됨
     
     $pdo->beginTransaction();
 
@@ -66,11 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         // B. 레스토랑 통계 갱신 (평균 평점 및 리뷰 수 재계산)
-        // 서브쿼리를 사용하여 현재 시점의 총합과 개수를 구함
         $sql_update_stats = "UPDATE restaurants SET 
-                                avg_rating = (SELECT AVG(rating_score) FROM reviews WHERE restaurant_id = ?),
-                                review_count = (SELECT COUNT(*) FROM reviews WHERE restaurant_id = ?)
-                             WHERE restaurant_id = ?";
+                                 avg_rating = (SELECT AVG(rating_score) FROM reviews WHERE restaurant_id = ?),
+                                 review_count = (SELECT COUNT(*) FROM reviews WHERE restaurant_id = ?)
+                               WHERE restaurant_id = ?";
         $stmt_update = $pdo->prepare($sql_update_stats);
         $stmt_update->execute([$restaurant_id, $restaurant_id, $restaurant_id]);
 
@@ -82,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 5. 오류 발생 시 롤백
         $pdo->rollBack();
         $message = "리뷰 등록 실패: " . $e->getMessage();
-        // 실제 운영 환경에서는 오류 로깅만 하고 사용자에게는 일반적인 메시지 제공
     }
 }
 // HTML 폼 및 결과 메시지 출력 부분...
@@ -92,6 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>리뷰 작성</title>
+    <style>
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select, textarea { margin-bottom: 10px; padding: 8px; width: 300px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
 </head>
 <body>
     <h1>새 리뷰 작성</h1>
@@ -100,26 +114,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" action="review_create.php">
-        <label>레스토랑 ID:</label>
-        <input type="number" name="restaurant_id" required value="1"><br>
+        
+        <label for="restaurant_id">레스토랑:</label>
+        <select id="restaurant_id" name="restaurant_id" required>
+            <option value="">-- 레스토랑 선택 --</option>
+            <?php foreach ($restaurants as $res): ?>
+                <option value="<?php echo htmlspecialchars($res['restaurant_id']); ?>">
+                    <?php echo htmlspecialchars($res['name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select><br>
 
-        <label>방문 목적 ID (occasion_id):</label>
-        <input type="number" name="occasion_id" required value="1"><br>
+        <label for="occasion_id">방문 목적 (Occasion):</label>
+        <select id="occasion_id" name="occasion_id" required>
+            <option value="">-- 목적 선택 --</option>
+            <?php foreach ($occasions as $occasion): ?>
+                <option value="<?php echo htmlspecialchars($occasion['occasion_id']); ?>">
+                    <?php echo htmlspecialchars($occasion['occasion_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select><br>
 
-        <label>시간대 ID (time_slot_id):</label>
-        <input type="number" name="time_slot_id" required value="1"><br>
+        <label for="time_slot_id">시간대 (Time Slot):</label>
+        <select id="time_slot_id" name="time_slot_id" required>
+            <option value="">-- 시간대 선택 --</option>
+            <?php foreach ($time_slots as $slot): ?>
+                <option value="<?php echo htmlspecialchars($slot['time_slot_id']); ?>">
+                    <?php echo htmlspecialchars($slot['time_of_day']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select><br>
 
-        <label>평점 (1-5):</label>
-        <input type="number" name="rating_score" min="1" max="5" required><br>
+        <label for="rating_score">평점 (1-5):</label>
+        <input type="number" id="rating_score" name="rating_score" min="1" max="5" required><br>
 
-        <label>지출 금액:</label>
-        <input type="number" name="spend_amount" required><br>
+        <label for="spend_amount">지출 금액:</label>
+        <input type="number" id="spend_amount" name="spend_amount" required><br>
 
-        <label>방문 시각 (visit_time):</label>
-        <input type="datetime-local" name="visit_time" required><br>
+        <label for="visit_time">방문 시각 (visit_time):</label>
+        <input type="datetime-local" id="visit_time" name="visit_time" required><br>
 
-        <label>리뷰 코멘트:</label>
-        <textarea name="comment"></textarea><br>
+        <label for="comment">리뷰 코멘트:</label>
+        <textarea id="comment" name="comment"></textarea><br>
 
         <button type="submit">리뷰 등록</button>
     </form>
