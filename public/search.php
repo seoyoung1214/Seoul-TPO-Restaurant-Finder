@@ -177,7 +177,7 @@ $weekend_only = $_GET['weekend_only'] ?? '';
         }
 
         if ($weekend_only) {
-        $query .= " AND DAYOFWEEK(rv.visit_time) IN (1,7) ";
+            $query .= " AND DAYOFWEEK(rv.visit_time) IN (1,7) ";
         }
 
         

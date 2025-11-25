@@ -18,9 +18,7 @@ session_start();
     <h2 class="mb-4">📄 전체 리뷰 목록</h2>
 
     <?php
-    // ======================
     //   리뷰 JOIN 조회
-    // ======================
 
     $sql = "
         SELECT 
@@ -29,6 +27,7 @@ session_start();
             r.spend_amount,
             r.comment,
             r.created_at,
+            r.visit_time,
 
             u.username,
             rs.restaurant_id,
@@ -44,7 +43,7 @@ session_start();
         JOIN districts d         ON rs.district_id = d.district_id
         JOIN occasions oc        ON r.occasion_id = oc.occasion_id
         JOIN time_slots ts       ON r.time_slot_id = ts.time_slot_id
-        ORDER BY r.created_at DESC
+        ORDER BY r.visit_time DESC
     ";
 
     $stmt = $conn->prepare($sql);
@@ -83,7 +82,10 @@ session_start();
 
                 <p class='mb-1'>💬 {$row['comment']}</p>
 
-                <small class='text-muted'>작성자: {$row['username']} | 작성일: {$row['created_at']}</small>
+                <small class='text-muted'>
+                    작성자: {$row['username']} |
+                    방문일: " . date("Y-m-d H:i", strtotime($row['visit_time'])) . "
+                </small>
 
                 $editDelete
             </div>
