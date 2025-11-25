@@ -177,8 +177,10 @@ $weekend_only = $_GET['weekend_only'] ?? '';
         }
 
         if ($weekend_only) {
-            $query .= " AND DAYOFWEEK(rv.created_at) IN (1,7) ";
+        $query .= " AND DAYOFWEEK(rv.visit_time) IN (1,7) ";
         }
+
+        
 
         $query .= " AND r.price <= :max_price ";
         $params[':max_price'] = $max_price;
