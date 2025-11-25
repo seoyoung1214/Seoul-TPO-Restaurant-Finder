@@ -7,8 +7,8 @@
 // Database configuration constants
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'team12');
-define('DB_USER', 'team12');
-define('DB_PASS', 'team12');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Application settings
