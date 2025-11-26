@@ -283,7 +283,37 @@ INSERT INTO restaurants (name, district_id, address, description, price, opening
     ('Congdu Pork Belly', 13, '34 Yanghwa-ro 16-gil, Mapo-gu', 'Premium pork belly restaurant', 18000, '17:00-02:00', NULL),
     ('Seoul Samgyetang', 23, '85-1 Samil-daero 30-gil, Jongno-gu', 'Ginseng chicken soup specialty', 16000, '10:00-22:00', 'Tuesday'),
     ('Dongbaekseom', 1, '25 Apgujeong-ro 10-gil, Gangnam-gu', 'Authentic Korean seafood restaurant with fresh catch daily', 72000, '11:00-22:00', NULL),
-    ('Le Chamber Seoul', 13, '45 Wausan-ro 21-gil, Mapo-gu', 'French fine dining with Korean seasonal ingredients', 135000, '18:00-22:30', 'Monday');
+    ('Le Chamber Seoul', 13, '45 Wausan-ro 21-gil, Mapo-gu', 'French fine dining with Korean seasonal ingredients', 135000, '18:00-22:30', 'Monday'),
+    ('Kimchi Stew Galbi', 5, '101 Dobong-ro, Gangbuk-gu', 'Traditional kimchi stew and grilled ribs', 16000, '10:00-21:00', 'Monday'),
+    ('Hongdae California Pizza', 13, '222 Hongdae-ro, Mapo-gu', 'Casual American-style pizza house', 21000, '11:00-23:00', NULL),
+    ('Mapo Chicken Story', 13, '333 Mapo-daero, Mapo-gu', 'Crispy Korean fried chicken', 19000, '12:00-24:00', 'Wednesday'),
+    ('Cheongdam Bossam', 1, '9-1 Apgujeong-ro, Gangnam-gu', 'Signature bossam and side dishes', 28000, '10:30-22:30', 'Thursday'),
+    ('Jongno Gamjatang', 23, '87 Jongno 1-ga, Jongno-gu', 'Pork backbone stew, open late night', 12000, '09:00-03:00', NULL),
+    ('The Soban Itaewon', 21, '2 Itaewon-ro 42-gil, Yongsan-gu', 'Modern Korean fusion grill', 37000, '17:00-24:00', NULL),
+    ('Yeoksam Cafe Moment', 1, '98 Teheran-ro, Gangnam-gu', 'Trendy dessert and brunch cafe', 17000, '07:00-22:00', NULL),
+    ('Gwangjin Sushi Garden', 6, '54 Wangsimni-ro, Gwangjin-gu', 'Japanese sushi & sake bar', 38000, '12:00-22:00', NULL),
+    ('Seodaemun Tteokbokki', 14, '11 Yonsei-ro 15-gil, Seodaemun-gu', 'Spicy rice cakes and tempura', 9000, '11:00-21:00', NULL),
+    ('Cheese Dakgalbi', 18, '610 Olympic-ro, Songpa-gu', 'Cheese + chicken stir-fry specialty', 19000, '12:00-23:00', NULL),
+    ('Bukchon Noodle House', 23, '88 Bukchon-ro, Jongno-gu', 'Homemade noodles and dumplings', 11000, '11:00-20:00', 'Tuesday'),
+    ('Namsan Vegan Kitchen', 24, '2 Myeongdong 7-gil, Jung-gu', 'Plant-based/vegan creative plates', 21000, '10:00-22:00', NULL),
+    ('Songpa Seoul Pho', 18, '210 Olympic-ro, Songpa-gu', 'Vietnamese pho and rice dishes', 14000, '11:00-22:00', 'Thursday'),
+    ('Yeouido Donkatsu', 20, '41 Yeouido-dong, Yeongdeungpo-gu', 'Extra thick pork cutlet, Japanese style', 16000, '11:30-22:00', NULL),
+    ('Seocho Gourmet Street', 15, '5 Seocho-daero, Seocho-gu', 'Gourmet alley with various street food', 7500, '09:00-20:00', NULL),
+    ('Gangdong Hongli Hotpot', 2, '301 Gangdong-ro, Gangdong-gu', 'Chinese spicy hotpot with buffet', 31000, '17:00-24:00', NULL),
+    ('Yongsan Indian Curry', 21, '12 Itaewon-ro 36-gil, Yongsan-gu', 'North & South Indian curry house', 19500, '11:00-22:30', NULL),
+    ('Seongbuk Italian Table', 17, '8 Dongsomun-ro, Seongbuk-gu', 'Italian bistro with extensive wine', 32000, '12:30-23:30', 'Friday'),
+    ('Gangseo Green Bistro', 4, '2 Hwagok-ro, Gangseo-gu', 'Casual vegetarian lunch, delicious salad', 15400, '11:30-20:00', NULL),
+    ('Nowon Jjajangmyeon', 9, '55 Nowon-ro, Nowon-gu', 'Classic Korean-Chinese noodles', 8500, '10:00-22:00', 'Monday'),
+    ('Guro Sushi Express', 7, '310 Guro-dong, Guro-gu', 'Quick affordable sushi rolls', 9000, '10:30-21:30', NULL),
+    ('Dongjak Soondae House', 12, '17 Noryangjin-ro, Dongjak-gu', 'Best blood sausage and soup', 9000, '09:00-22:00', NULL),
+    ('Geumcheon Udon', 8, '22 Doksan-ro, Geumcheon-gu', 'Japanese udon noodles & tempura', 12000, '11:00-21:00', 'Wednesday'),
+    ('Dobong Ramen Garage', 10, '88 Dobong-ro, Dobong-gu', 'Late-night ramen and snacks', 16000, '18:00-03:00', NULL),
+    ('Mapo Brunch Club', 13, '61 Hongdae-ro, Mapo-gu', 'All-day brunch, pancakes and coffee', 15500, '08:00-18:00', NULL),
+    ('Gwanak Chicken Nuggets', 5, '367 Sillim-ro, Gwanak-gu', 'Crispy homemade chicken nuggets', 13500, '12:00-22:00', NULL),
+    ('Yangcheon Calzone', 19, '17 Mokdong-ro, Yangcheon-gu', 'Italian calzone and pizza', 21500, '11:00-23:00', NULL),
+    ('Seocho Steakhouse', 15, '188 Seocho-daero, Seocho-gu', 'Dry-aged steak and wine', 89000, '17:30-23:30', 'Sunday'),
+    ('Songpa Laksa', 18, '50 Songpa-daero, Songpa-gu', 'Singaporean laksa and seafood', 15500, '13:00-21:00', 'Monday'),
+    ('Seongdong Vegan Burger', 16, '30 Wangsimni-ro, Seongdong-gu', 'Plant-based burgers & fries', 14000, '10:00-20:00', NULL);
 
 -- 7. Insert restaurant_cuisines (N:M mapping, ~300 rows)
 INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
@@ -296,7 +326,11 @@ INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
     (61, 15), (62, 15), (63, 20), (64, 14), (65, 14), (66, 1), (67, 5), (68, 1), (69, 1), (70, 1),
     (71, 1), (72, 1), (73, 15), (74, 15), (75, 19), (76, 1), (77, 1), (78, 8), (79, 10), (80, 4),
     (81, 15), (82, 1), (83, 20), (84, 1), (85, 1), (86, 1), (87, 2), (88, 11), (89, 11), (90, 11),
-    (91, 1), (92, 2), (93, 1), (94, 1), (95, 4), (96, 1), (97, 1), (98, 2), (99, 11), (100, 1);
+    (91, 1), (92, 2), (93, 1), (94, 1), (95, 4), (96, 1), (97, 1), (98, 2), (99, 11), (100, 1),
+    (101, 1), (102, 13), (103, 12), (104, 1), (105, 1), (106, 19), (107, 15), (108, 2),
+    (109, 10), (110, 11), (111, 2), (112, 18), (113, 8), (114, 12), (115, 15), (116, 3),
+    (117, 9), (118, 5), (119, 18), (120, 3), (121, 2), (122, 3), (123, 7), (124, 2),
+    (125, 15), (126, 12), (127, 14), (128, 4), (129, 18), (130, 19);
 
 -- Add secondary cuisines for some restaurants
 INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
@@ -305,65 +339,85 @@ INSERT INTO restaurant_cuisines (restaurant_id, cuisine_id) VALUES
     (51, 16), (53, 1), (54, 1), (66, 19), (67, 4), (75, 1), (79, 1), (87, 17),
     (91, 6), (92, 17), (93, 2), (94, 6), (95, 6), (98, 1);
 
--- 8. Insert reviews (850+ rows for comprehensive analysis)
-INSERT INTO reviews (user_id, restaurant_id, occasion_id, time_slot_id, rating_score, spend_amount, comment, visit_time)
-SELECT 
-    ((n % 100) + 1) as user_id,
-    ((n % 100) + 1) as restaurant_id,
-    ((n % 10) + 1) as occasion_id,
+-- 8. Insert reviews (1000 rows, varied combinations)
+INSERT INTO reviews (
+    user_id, restaurant_id, occasion_id, time_slot_id,
+    rating_score, spend_amount, comment, visit_time
+)
+SELECT
+    -- user_id: 1~100 분포
+    (n % 100) + 1                                   AS user_id,
+    -- restaurant_id: 1~130 분포
+    ((n * 7) % 130) + 1                             AS restaurant_id,
+    -- occasion_id: 1~10
+    ((n * 47 + 61) % 10) + 1                        AS occasion_id,
+    -- time_slot_id: 1~5
+    ((n * 33 + 7) % 5) + 1                          AS time_slot_id,
+    -- rating_score: 1~5, 식당·유저 조합마다 좀 섞이도록 패턴화
     CASE 
-        WHEN n % 24 < 7 THEN 1
-        WHEN n % 24 < 12 THEN 2
-        WHEN n % 24 < 15 THEN 3
-        WHEN n % 24 < 22 THEN 4
-        ELSE 5
-    END as time_slot_id,
+        WHEN n % 11 IN (0,1,2,3) THEN 5
+        WHEN n % 11 IN (4,5,6)   THEN 4
+        WHEN n % 11 IN (7,8)     THEN 3
+        WHEN n % 11 = 9          THEN 2
+        ELSE 1
+    END                                             AS rating_score,
+    -- spend_amount: 15,000 ~ 200,000 정도에서 다양하게
     CASE 
-        WHEN n % 10 < 6 THEN 5
-        WHEN n % 10 < 9 THEN 4
-        ELSE 3
-    END as rating_score,
-    CASE 
-        WHEN ((n % 100) + 1) <= 11 THEN 100000 + (n % 10) * 20000
-        WHEN ((n % 100) + 1) <= 20 THEN 60000 + (n % 8) * 10000
-        WHEN ((n % 100) + 1) <= 35 THEN 40000 + (n % 6) * 5000
-        ELSE 15000 + (n % 15) * 3000
-    END as spend_amount,
-    CASE 
-        WHEN n % 15 = 0 THEN 'Excellent food and atmosphere! Will definitely come back.'
-        WHEN n % 15 = 1 THEN 'Great place for special occasions. Service was impeccable.'
-        WHEN n % 15 = 2 THEN 'Food was delicious and portions were generous.'
-        WHEN n % 15 = 3 THEN 'Good value for money. Recommended for casual dining.'
-        WHEN n % 15 = 4 THEN 'Perfect spot for a date. Romantic ambiance.'
-        WHEN n % 15 = 5 THEN 'Family-friendly restaurant with good variety.'
-        WHEN n % 15 = 6 THEN 'Quick service and tasty food. Good for lunch.'
-        WHEN n % 15 = 7 THEN 'Authentic flavors. Loved the traditional preparation.'
-        WHEN n % 15 = 8 THEN 'Modern twist on classic dishes. Very creative.'
-        WHEN n % 15 = 9 THEN 'Cozy atmosphere, perfect for catching up with friends.'
-        WHEN n % 15 = 10 THEN 'High quality ingredients. Worth the premium price.'
-        WHEN n % 15 = 11 THEN 'Decent food but nothing extraordinary.'
-        WHEN n % 15 = 12 THEN 'Great for business meetings. Professional setting.'
-        WHEN n % 15 = 13 THEN 'Solo dining friendly. Good food at reasonable prices.'
-        ELSE 'Enjoyable experience overall. Would visit again.'
-    END as comment,
-    DATE_SUB(NOW(), INTERVAL (n % 365) DAY) as visit_time 
+        WHEN ((n * 7) % 130) + 1 <= 26  THEN 90000  + (n % 6)  * 10000  -- 고급 식당
+        WHEN ((n * 7) % 130) + 1 <= 52  THEN 60000  + (n % 8)  * 5000   -- 중상 가격
+        WHEN ((n * 7) % 130) + 1 <= 91  THEN 30000  + (n % 10) * 3000   -- 중간 가격
+        ELSE                                  7000  + (n % 12) * 2000   -- 저가/캐주얼
+    END                                             AS spend_amount,
+    -- comment: 20종 정도 패턴 돌려쓰기
+    CASE (n % 20)
+        WHEN 0  THEN 'Excellent food and atmosphere! Will definitely come back.'
+        WHEN 1  THEN 'Great place for special occasions. Service was impeccable.'
+        WHEN 2  THEN 'Food was delicious and portions were generous.'
+        WHEN 3  THEN 'Good value for money. Recommended for casual dining.'
+        WHEN 4  THEN 'Perfect spot for a date. Romantic ambiance and cozy interior.'
+        WHEN 5  THEN 'Family-friendly restaurant with a wide variety of dishes.'
+        WHEN 6  THEN 'Quick service and tasty food. Ideal for lunch breaks.'
+        WHEN 7  THEN 'Authentic flavors with traditional cooking style.'
+        WHEN 8  THEN 'Modern twist on classic dishes. Very creative menu.'
+        WHEN 9  THEN 'Cozy atmosphere, great for catching up with friends.'
+        WHEN 10 THEN 'High quality ingredients. Worth the premium price.'
+        WHEN 11 THEN 'Decent food but nothing extraordinary. Could be better.'
+        WHEN 12 THEN 'Great for business meetings. Calm and professional setting.'
+        WHEN 13 THEN 'Solo dining friendly. Comfortable seating and service.'
+        WHEN 14 THEN 'Enjoyable experience overall. Would visit again.'
+        WHEN 15 THEN 'Amazing desserts and coffee. Perfect afternoon spot.'
+        WHEN 16 THEN 'Staff were very kind and attentive throughout the meal.'
+        WHEN 17 THEN 'Lively atmosphere, good for group gatherings and parties.'
+        WHEN 18 THEN 'Portions were slightly small for the price, but tasty.'
+        ELSE        'Reservation is recommended. The place gets crowded quickly.'
+    END                                             AS comment,
+    -- visit_time: 최근 365일 안의 랜덤-ish 날짜/시간
+    DATE_SUB(
+        DATE_ADD(
+            CURDATE(),
+            INTERVAL (n % 24) HOUR
+        ),
+        INTERVAL (n % 365) DAY
+    )                                               AS visit_time
 FROM (
-    SELECT a.n + b.n * 10 + c.n * 100 as n
+    -- n: 0 ~ 999 생성 (총 1000개)
+    SELECT 
+        (a.n + b.n * 10 + c.n * 100) AS n
     FROM 
-        (SELECT 0 as n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
+        (SELECT 0 AS n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
          UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,
-        (SELECT 0 as n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
+        (SELECT 0 AS n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
          UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b,
-        (SELECT 0 as n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
-         UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8) c
-    WHERE a.n + b.n * 10 + c.n * 100 < 850
+        (SELECT 0 AS n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
+         UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c
+    WHERE (a.n + b.n * 10 + c.n * 100) < 1000
 ) numbers;
 
 -- Update restaurant statistics based on reviews
 UPDATE restaurants r
 SET 
     avg_rating = (
-        SELECT COALESCE(ROUND(AVG(rating_score), 2), 0.0)
+        SELECT COALESCE(CAST(AVG(rating_score) AS DECIMAL(3,2)), 0.0)
         FROM reviews 
         WHERE restaurant_id = r.restaurant_id
     ),
