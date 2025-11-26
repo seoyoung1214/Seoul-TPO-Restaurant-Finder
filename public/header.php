@@ -42,21 +42,32 @@
             </ul>
 
             <ul class="navbar-nav">
+
                 <?php if (!empty($_SESSION['user_id'])): ?>
+                    <!-- 로그인 상태 -->
                     <li class="nav-item">
                         <span class="nav-link text-light">
-                            <?= htmlspecialchars($_SESSION['username'] ?? "", ENT_QUOTES, 'UTF-8') ?> 님
+                            <?= htmlspecialchars($_SESSION['username'] ?? '', ENT_QUOTES, 'UTF-8') ?> 님
                         </span>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/logout.php">Logout</a>
                     </li>
+
                 <?php else: ?>
+                    <!-- 비로그인 상태 -->
                     <li class="nav-item">
                         <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/login.php">Login</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/register.php">Register</a>
+                    </li>
                 <?php endif; ?>
+
             </ul>
+
         </div>
     </div>
 </nav>
