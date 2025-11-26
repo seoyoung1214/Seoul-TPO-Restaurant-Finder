@@ -10,21 +10,34 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/team05/index.php">TPO Finder</a>
+        <a class="navbar-brand" href="/Seoul-TPO-Restaurant-Finder/public/index.php">TPO Finder</a>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/team05/search.php">Search</a>
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/search.php">맛집 검색</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/team05/analysis_group.php">Analysis</a>
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/reviews.php">리뷰 목록</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/team05/my_reviews.php">My Reviews</a>
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/review_create.php">리뷰 작성</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/analysis_rank.php">가게 랭킹</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/analysis_group.php">그룹핑 분석</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/analysis_rollup.php">롤업 분석</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/analysis_window.php">윈도잉 분석</a>
                 </li>
             </ul>
 
@@ -36,11 +49,11 @@
                         </span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/team05/logout.php">Logout</a>
+                        <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/logout.php">Logout</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/team05/login.php">Login</a>
+                        <a class="nav-link" href="/Seoul-TPO-Restaurant-Finder/public/login.php">Login</a>
                     </li>
                 <?php endif; ?>
             </ul>

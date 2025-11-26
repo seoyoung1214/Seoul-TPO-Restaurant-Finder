@@ -1,6 +1,7 @@
 <?php
 require_once "../config/db.php";
 session_start();
+require_once __DIR__ . '/header.php';
 $conn = getDB();
 
 // --- 필터 값 수신 ---

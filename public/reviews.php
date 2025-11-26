@@ -1,9 +1,8 @@
 <?php
-require_once __DIR__ . '/../config/db.php';
-session_start();
-
-// DB 커넥션
-$pdo = getDB();
+session_start();                      
+require_once "../config/db.php";       
+require_once __DIR__ . "/header.php";  
+$pdo = getDB();                       
 ?>
 
 <!DOCTYPE html>
