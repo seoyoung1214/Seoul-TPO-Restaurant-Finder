@@ -106,13 +106,36 @@ $weekend_only = $_GET['weekend_only'] ?? '';
 
     </div>
 
-    <!-- 가격 -->
-    <div class="mb-3">
-        <label class="form-label">예산 상한</label>
-        <input type="range" class="form-range" name="max_price"
-                min="10000" max="400000" step="5000"
-                value="<?= $max_price ?>">
+   <div class="mb-3">
+    <label class="form-label">예산 상한</label>
+
+    <!-- 현재 금액 표시 -->
+    <div class="d-flex align-items-center mb-2">
+        <span class="me-2">선택 금액:</span>
+        <span id="price_value" class="fw-bold text-primary">
+            <?= number_format($max_price) ?>원
+        </span>
     </div>
+
+    <!-- 슬라이더 -->
+    <input type="range" 
+           class="form-range" 
+           name="max_price"
+           id="max_price"
+           min="10000" 
+           max="400000" 
+           step="5000"
+           value="<?= $max_price ?>">
+</div>
+
+<script>
+    // 실시간 가격 업데이트
+    document.getElementById("max_price").addEventListener("input", function() {
+        let val = Number(this.value).toLocaleString() + "원";
+        document.getElementById("price_value").textContent = val;
+    });
+</script>
+
 
     <!-- 평점 -->
     <div class="mb-3 form-check">
