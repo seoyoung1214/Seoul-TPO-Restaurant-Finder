@@ -1,6 +1,8 @@
 <?php
 require_once "../config/db.php"; 
 session_start();
+$conn = getDB();
+
 
 // --- 필터 값 수신 ---
 $district     = $_GET['district']     ?? '';

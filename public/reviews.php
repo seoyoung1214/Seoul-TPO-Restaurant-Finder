@@ -1,5 +1,6 @@
 <?php
 require_once "../config/db.php";
+$conn = getDB();
 session_start();
 ?>
 
