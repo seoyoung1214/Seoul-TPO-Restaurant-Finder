@@ -1,7 +1,9 @@
 <?php
-require_once "../config/db.php";
-$conn = getDB();
+require_once __DIR__ . '/../config/db.php';
 session_start();
+
+// DB 커넥션
+$pdo = getDB();
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +21,11 @@ session_start();
     <h2 class="mb-4">📄 전체 리뷰 목록</h2>
 
     <?php
-    //   리뷰 JOIN 조회
-
+    // 리뷰 JOIN 조회
     $sql = "
         SELECT 
             r.review_id,
+            r.user_id,
             r.rating_score,
             r.spend_amount,
             r.comment,
@@ -39,15 +41,15 @@ session_start();
             ts.time_of_day
 
         FROM reviews r
-        JOIN users u             ON r.user_id = u.user_id
-        JOIN restaurants rs      ON r.restaurant_id = rs.restaurant_id
-        JOIN districts d         ON rs.district_id = d.district_id
-        JOIN occasions oc        ON r.occasion_id = oc.occasion_id
-        JOIN time_slots ts       ON r.time_slot_id = ts.time_slot_id
+        JOIN users u        ON r.user_id = u.user_id
+        JOIN restaurants rs ON r.restaurant_id = rs.restaurant_id
+        JOIN districts d    ON rs.district_id = d.district_id
+        JOIN occasions oc   ON r.occasion_id = oc.occasion_id
+        JOIN time_slots ts  ON r.time_slot_id = ts.time_slot_id
         ORDER BY r.visit_time DESC
     ";
 
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -58,7 +60,6 @@ session_start();
         
         foreach ($rows as $row) {
 
-            // 본인 리뷰일 경우 수정/삭제 표시
             $editDelete = "";
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $row['user_id']) {
                 $editDelete = "
@@ -70,9 +71,14 @@ session_start();
                 ";
             }
 
+            $visit = $row['visit_time'] 
+                ? date('Y-m-d H:i', strtotime($row['visit_time']))
+                : date('Y-m-d H:i', strtotime($row['created_at']));
+
             echo "
             <div class='list-group-item mb-3'>
-                <h5 class='mb-1'>🍽 {$row['restaurant_name']} <small class='text-muted'>({$row['district_name']})</small></h5>
+                <h5 class='mb-1'>🍽 {$row['restaurant_name']} 
+                    <small class='text-muted'>({$row['district_name']})</small></h5>
 
                 <p class='mb-1'>
                     ⭐ 평점: <strong>{$row['rating_score']}</strong><br>
@@ -84,11 +90,10 @@ session_start();
                 <p class='mb-1'>💬 {$row['comment']}</p>
 
                 <small class='text-muted'>
-                    작성자: {$row['username']} |
-                    방문일: " . date("Y-m-d H:i", strtotime($row['visit_time'])) . "
+                    작성자: {$row['username']} | 방문일: {$visit}
                 </small>
 
-                $editDelete
+                {$editDelete}
             </div>
             ";
         }
