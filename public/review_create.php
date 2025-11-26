@@ -1,13 +1,16 @@
 <?php
-// db.php 파일 include (PDO 연결 객체 $pdo를 사용한다고 가정)
-require_once '../config/db.php';
-
 // =======================================================
 // [임시 조치] header.php의 역할을 대신하여 세션을 시작합니다.
 // =======================================================
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+// db.php 파일 include (PDO 연결 객체 $pdo를 사용한다고 가정)
+require_once '../config/db.php';
+require_once __DIR__ . "/header.php";
+
+
+
 
 // db.php 파일에 정의된 getDB() 함수를 호출하여 PDO 객체를 $pdo 변수에 할당
 $pdo = getDB();

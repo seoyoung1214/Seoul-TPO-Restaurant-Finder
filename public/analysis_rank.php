@@ -1,11 +1,9 @@
 <?php
 // ... DB 연결 및 HTML 상단 코드 ...
 require_once '../config/db.php';
+session_start();
+require_once __DIR__ . "/header.php";
 
-// header.php가 없으므로 세션을 직접 시작합니다.
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
 // $pdo 객체 할당
 $pdo = getDB();
