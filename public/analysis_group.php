@@ -123,7 +123,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $rows = $stmt->fetchAll();
 
-include 'header.php';
 ?>
 
 <h2>TPO 기반 복합 그룹핑 분석</h2>

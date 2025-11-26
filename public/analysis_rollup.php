@@ -90,7 +90,6 @@ if ($level === '3') {
     $colspan++; // Occasion 컬럼 추가
 }
 
-include 'header.php';
 ?>
 
 <h2>ROLLUP / Drill-down 분석</h2>

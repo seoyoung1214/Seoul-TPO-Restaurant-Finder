@@ -42,10 +42,10 @@
             </ul>
 
             <ul class="navbar-nav">
-                <?php if (isset($_SESSION['user_id'])): ?>
+                <?php if (!empty($_SESSION['user_id'])): ?>
                     <li class="nav-item">
                         <span class="nav-link text-light">
-                            <?= $_SESSION['username'] ?> 님
+                            <?= htmlspecialchars($_SESSION['username'] ?? "", ENT_QUOTES, 'UTF-8') ?> 님
                         </span>
                     </li>
                     <li class="nav-item">
@@ -57,7 +57,6 @@
                     </li>
                 <?php endif; ?>
             </ul>
-
         </div>
     </div>
 </nav>

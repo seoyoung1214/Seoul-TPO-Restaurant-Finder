@@ -15,10 +15,6 @@ define('DB_CHARSET', 'utf8mb4');
 define('APP_NAME', 'Seoul TPO Restaurant Finder');
 define('APP_URL', 'http://localhost/team12/');
 
-// Session configuration
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-
 // Error reporting (set to 0 in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
