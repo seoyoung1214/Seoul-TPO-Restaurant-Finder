@@ -30,9 +30,27 @@ $weekend_only = $_GET['weekend_only'] ?? '';
 <form class="card p-4 mb-4" method="GET">
     <div class="row mb-3">
 
+        <!-- 시간대 -->
+        <div class="col-md-3">
+            <label class="form-label">Time: 시간대</label>
+            <select name="time_slot" class="form-select">
+                <option value="">전체</option>
+                <?php
+                $sql = "SELECT time_slot_id, time_of_day FROM time_slots ORDER BY time_slot_id";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $selected = ($time_slot == $row['time_slot_id']) ? "selected" : "";
+                    echo "<option value='{$row['time_slot_id']}' $selected>{$row['time_of_day']}</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+
         <!-- 구 선택 -->
         <div class="col-md-3">
-            <label class="form-label">지역(구)</label>
+            <label class="form-label">Place: 지역(구)</label>
             <select name="district" class="form-select">
                 <option value="">전체</option>
                 <?php
@@ -45,6 +63,27 @@ $weekend_only = $_GET['weekend_only'] ?? '';
                 }
                 ?>
             </select>
+        </div>
+        
+
+        <!-- 자리/목적 -->
+        <div class="col-md-3">
+            <label class="form-label">Occasion: 자리/목적</label><br>
+            <?php
+            $sql = "SELECT occasion_id, occasion_name FROM occasions ORDER BY occasion_name";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $checked = ($occasion == $row['occasion_id']) ? "checked" : "";
+                echo "
+                    <label class='me-2'>
+                        <input type='radio' name='occasion' value='{$row['occasion_id']}' $checked>
+                        {$row['occasion_name']}
+                    </label>
+                ";
+            }
+            ?>
+            <label class="ms-2"><input type="radio" name="occasion" value="" <?= ($occasion==''?'checked':'') ?>> 전체</label>
         </div>
 
         <!-- 음식 종류 -->
@@ -65,43 +104,6 @@ $weekend_only = $_GET['weekend_only'] ?? '';
             }
             ?>
             <label class="ms-2"><input type="radio" name="cuisine" value="" <?= ($cuisine==''?'checked':'') ?>> 전체</label>
-        </div>
-
-        <!-- 시간대 -->
-        <div class="col-md-3">
-            <label class="form-label">시간대</label>
-            <select name="time_slot" class="form-select">
-                <option value="">전체</option>
-                <?php
-                $sql = "SELECT time_slot_id, time_of_day FROM time_slots ORDER BY time_slot_id";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $selected = ($time_slot == $row['time_slot_id']) ? "selected" : "";
-                    echo "<option value='{$row['time_slot_id']}' $selected>{$row['time_of_day']}</option>";
-                }
-                ?>
-            </select>
-        </div>
-
-        <!-- 자리/목적 -->
-        <div class="col-md-3">
-            <label class="form-label">자리/목적</label><br>
-            <?php
-            $sql = "SELECT occasion_id, occasion_name FROM occasions ORDER BY occasion_name";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $checked = ($occasion == $row['occasion_id']) ? "checked" : "";
-                echo "
-                    <label class='me-2'>
-                        <input type='radio' name='occasion' value='{$row['occasion_id']}' $checked>
-                        {$row['occasion_name']}
-                    </label>
-                ";
-            }
-            ?>
-            <label class="ms-2"><input type="radio" name="occasion" value="" <?= ($occasion==''?'checked':'') ?>> 전체</label>
         </div>
 
     </div>
@@ -148,7 +150,7 @@ $weekend_only = $_GET['weekend_only'] ?? '';
     <div class="mb-4 form-check">
         <input class="form-check-input" type="checkbox" name="weekend_only" value="1"
             <?= ($weekend_only == "1") ? "checked" : "" ?>>
-        <label class="form-check-label">주말만 보기</label>
+        <label class="form-check-label">주말에 영업하는 가게만 보기</label>
     </div>
 
     <button type="submit" class="btn btn-primary">검색</button>
@@ -158,7 +160,10 @@ $weekend_only = $_GET['weekend_only'] ?? '';
 
 <!-- 검색 결과 -->
 <div class="card p-4">
-<h4 class="mb-3">검색 결과</h4>
+<h4 class="mb-3">
+    검색 결과 
+    <?php if (isset($rows)) echo "<span class='text-primary'>(" . count($rows) . "개)</span>"; ?>
+</h4>
 
 <?php
 $query = "
