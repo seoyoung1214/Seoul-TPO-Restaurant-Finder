@@ -2,6 +2,7 @@
 // public/analysis_rollup.php
 session_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . "/header.php";
 
 // PDO 핸들 가져오기 (db.php의 getDB() 사용)
 $pdo = getDB();

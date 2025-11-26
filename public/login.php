@@ -1,6 +1,7 @@
 <?php
 // public/login.php
 session_start();
+require_once __DIR__ . "/header.php";
 require_once __DIR__ . '/../config/db.php';
 
 $pdo = getDB();

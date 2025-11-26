@@ -1,9 +1,9 @@
 <?php
 // public/index.php
 session_start();
+require_once __DIR__ . "/header.php";
 require_once __DIR__ . '/../config/db.php';
 
-include 'header.php';
 ?>
 
 <h1>Seoul TPO Restaurant Finder</h1>

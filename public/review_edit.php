@@ -3,6 +3,8 @@
 // 접속 : http://localhost:8080/team12/public/review_edit.php?id=1024
 session_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . "/header.php";
+
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

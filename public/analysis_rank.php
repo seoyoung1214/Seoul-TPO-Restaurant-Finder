@@ -6,6 +6,8 @@ require_once '../config/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+require_once __DIR__ . "/header.php";
+
 
 // $pdo 객체 할당
 $pdo = getDB();
