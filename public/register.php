@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'] ?? null;
     $birth_year = (int)($_POST['birth_year'] ?? 0);
 
+
+    
     // === Validation ===
     if ($username === '' || $password === '' || $password2 === '') {
         $error = '모든 필드를 입력해 주세요.';
