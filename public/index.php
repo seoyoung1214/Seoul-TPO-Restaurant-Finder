@@ -6,6 +6,7 @@ require_once __DIR__ . '/../config/db.php';
 
 ?>
 
+
 <h1>Seoul TPO Restaurant Finder</h1>
 
 <?php if (isset($_SESSION['username'])): ?>
