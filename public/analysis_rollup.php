@@ -2,6 +2,7 @@
 // public/analysis_rollup.php
 session_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . "/header.php";
 
 // PDO 핸들 가져오기 (db.php의 getDB() 사용)
 $pdo = getDB();
@@ -89,7 +90,6 @@ if ($level === '3') {
     $colspan++; // Occasion 컬럼 추가
 }
 
-include 'header.php';
 ?>
 
 <h2>ROLLUP / Drill-down 분석</h2>

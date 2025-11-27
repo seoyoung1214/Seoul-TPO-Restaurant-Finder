@@ -1,18 +1,26 @@
 <?php
 // public/index.php
 session_start();
+require_once __DIR__ . "/header.php";
 require_once __DIR__ . '/../config/db.php';
 
-include 'header.php';
 ?>
 
 <h1>Seoul TPO Restaurant Finder</h1>
 
 <?php if (isset($_SESSION['username'])): ?>
-    <p><strong><?= htmlspecialchars($_SESSION['username']) ?></strong> 님, 환영합니다 👋</p>
-    /*<p><a href="logout.php">로그아웃</a></p>*/
+    <p>
+        <strong><?= htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') ?></strong> 님, 환영합니다 👋
+    </p>
+    <p>
+        <a href="logout.php">로그아웃</a>
+    </p>
 <?php else: ?>
-    <p><a href="login.php">로그인</a> 후 TPO 맞춤 맛집을 확인해 보세요.</p>
+    <p>
+        <a href="login.php">로그인</a> /
+        <a href="register.php">회원가입</a>
+        후 TPO 맞춤 맛집을 확인해 보세요.
+    </p>
 <?php endif; ?>
 
 <hr>

@@ -1,6 +1,7 @@
 <?php
 // public/login.php
 session_start();
+require_once __DIR__ . "/header.php";
 require_once __DIR__ . '/../config/db.php';
 
 $pdo = getDB();
@@ -32,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include 'header.php';
 ?>
 
 <h2>로그인</h2>
