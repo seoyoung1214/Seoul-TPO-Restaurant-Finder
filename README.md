@@ -2,14 +2,14 @@
 
 ## 프로젝트 개요
 
-### 1. 🔍 시스템 필요성 (Why This System is Needed)
+### 1. 시스템 필요성 (Why This System is Needed)
 
 오늘날 서울에는 수많은 맛집 정보가 존재하지만, 정작 **'함께하는 사람', '시간', '목적지'** 등 개인화된 **TPO (Time, Place, Occasion)** 요소를 동시에 고려하여 최적의 식당을 찾는 것은 매우 비효율적입니다.
 
 * **비효율적인 의사결정:** 모임의 **출발지가 다를 때** 최적의 중간 지점을 찾거나, **데이트/비즈니스 미팅** 등 목적에 맞는 분위기를 보장하는 식당을 찾는 과정에서 많은 시간과 에너지 낭비가 발생합니다.
 * **단순 검색의 한계:** 기존의 검색 시스템은 '평점'이나 '음식 종류' 등 단일 필터만 제공할 뿐, 복합적인 상황 판단(예: "금요일 저녁, 강남역 근처, 캐주얼한 친구 모임에 적합한 가성비 좋은 한식집")을 지원하지 못합니다.
 
-### 2. 💡 해결 방안 및 시스템 가치
+### 2. 해결 방안 및 시스템 가치
 
 본 **Seoul TPO Restaurant Finder** 시스템은 이러한 비효율성을 해소하고, 데이터 기반의 스마트한 의사결정을 지원합니다.
 
@@ -21,7 +21,7 @@
 
 ---
 
-## ⚙️ 개발 환경 및 기술 스택
+## 개발 환경 및 기술 스택
 
 | 구분 | 기술 스택 | 특징 및 사용 목적 |
 | :--- | :--- | :--- |
@@ -67,7 +67,15 @@
 
 ---
 
-## 🚀 설치 및 실행 방법
+## Database Schema
+<img width="1747" height="762" alt="image" src="https://github.com/user-attachments/assets/5769c1e5-0dc0-4d1e-8a66-f738e3b9342b" />
+
+## Web Application Architecture
+<img width="739" height="521" alt="image" src="https://github.com/user-attachments/assets/bef09fe9-d482-42fd-97b7-3874eaec457b" />
+
+---
+
+## 설치 및 실행 방법
 
 제출된 코드만으로 다른 테스트 서버(XAMPP 설치됨)에 쉽게 설치 및 실행 가능해야 합니다.
 
@@ -95,3 +103,11 @@ SOURCE sql/dbinsert.sql;  # 초기 데이터 삽입 (최소 1000+ rows)
 
 # 4. 최종 DB 덤프 파일 생성
 # mysqldump -u teamXX -p teamXX > sql/dbdump.sql
+
+---
+## Database Schema
+<img width="1747" height="762" alt="image" src="https://github.com/user-attachments/assets/5769c1e5-0dc0-4d1e-8a66-f738e3b9342b" />
+---
+## Web Application Architecture
+<img width="739" height="521" alt="image" src="https://github.com/user-attachments/assets/bef09fe9-d482-42fd-97b7-3874eaec457b" />
+
