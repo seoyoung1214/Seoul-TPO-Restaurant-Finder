@@ -252,7 +252,7 @@ if (count($rows) == 0) {
 }
 ?>
 </div>
-
+    <?php include 'footer.php'; ?>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
  * Team: team12
  */
 
-// Database configuration constants
+// // Database configuration constants
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'team12');
 define('DB_USER', 'team12');

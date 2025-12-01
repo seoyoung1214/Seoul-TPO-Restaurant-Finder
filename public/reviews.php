@@ -63,8 +63,8 @@ $pdo = getDB();
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $row['user_id']) {
                 $editDelete = "
                     <div class='mt-2'>
-                        <a href='review_edit.php?review_id={$row['review_id']}' class='btn btn-sm btn-outline-primary'>수정</a>
-                        <a href='review_delete.php?review_id={$row['review_id']}' class='btn btn-sm btn-outline-danger'
+                        <a href='review_edit.php?id={$row['review_id']}' class='btn btn-sm btn-outline-primary'>수정</a>
+                        <a href='review_delete.php?id={$row['review_id']}' class='btn btn-sm btn-outline-danger'
                            onclick='return confirm(\"리뷰를 삭제할까요?\")'>삭제</a>
                     </div>
                 ";
@@ -100,7 +100,7 @@ $pdo = getDB();
         echo "</div>";
     }
     ?>
-
+    <?php include 'footer.php'; ?>
 </div>
 
 </body>

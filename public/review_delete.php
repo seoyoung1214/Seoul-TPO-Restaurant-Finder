@@ -1,5 +1,4 @@
 <?php
-// public/review_delete.php
 session_start();
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . "/header.php";
@@ -69,7 +68,6 @@ try {
 
 } catch (PDOException $e) {
     $pdo->rollBack();
-    // 개발 중에는 에러 메시지를 보고 싶으면 아래 주석을 잠깐 풀어도 됨
     // echo '에러: ' . $e->getMessage();
     exit('리뷰 삭제 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
 }

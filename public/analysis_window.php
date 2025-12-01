@@ -1,11 +1,9 @@
 <?php
-
 require_once '../config/db.php';
 
 session_start();
 require_once __DIR__ . "/header.php";
 
-// $pdo 객체 할당 
 $pdo = getDB();
 
 // =================================================================
@@ -140,6 +138,6 @@ if ($restaurant_id) {
     <hr>
     <p>요청하신 레스토랑 ID (<?php echo htmlspecialchars($restaurant_id); ?>) 에 대한 리뷰 데이터가 충분하지 않거나 존재하지 않습니다. 다른 ID를 시도해 보세요.</p>
 <?php endif; ?>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>

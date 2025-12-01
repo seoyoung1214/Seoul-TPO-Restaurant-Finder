@@ -17,10 +17,9 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// 세션 완전 종료
 session_destroy();
 
 // 로그아웃 후 메인 페이지로 이동
-header("Location: /Seoul-TPO-Restaurant-Finder/public/index.php");
+header("Location: /team12/public/index.php");
 exit;
 ?>
