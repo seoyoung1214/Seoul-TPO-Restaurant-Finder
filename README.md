@@ -31,6 +31,40 @@
 | **백엔드** | **PHP 7/8** | 서버 로직 및 DB 연동 담당. **PreparedStatements** 필수 사용. |
 | **프론트엔드** | HTML, CSS, JS | UI/UX 구현 (Bootstrap 기반 권장) |
 
+    teamXX/
+    ├── config/
+    │   ├── config.php        # DB 접속 정보(teamXX/teamXX) 설정 파일
+    │   └── db.php            # PDO 기반 DB 연결 및 핸들링 로직
+    │
+    ├── sql/
+    │   ├── dbcreate.sql      # 테이블 및 스키마 생성 스크립트 (PK/FK/Index 포함)
+    │   ├── dbinsert.sql      # 대규모 초기 데이터 삽입 스크립트 (1000+ rows)
+    │   ├── dbdrop.sql        # 테이블 삭제 스크립트
+    │   └── dbdump.sql        # 최종 mysqldump 결과 파일
+    │
+    ├── public/
+    │   ├── index.php         # 메인 페이지 및 기본 접근 페이지
+    │   ├── login.php         # 사용자 로그인 처리
+    │   ├── logout.php        # 사용자 로그아웃 처리
+    │   ├── register.php      # 사용자 회원가입 처리
+    │   ├── search.php        # TPO 기반 복합 검색 및 SELECT 페이지
+    │   ├── reviews.php       # 전체 리뷰 목록 조회 페이지
+    │   │
+    │   ├── review_create.php # 리뷰 INSERT (트랜잭션 적용)
+    │   ├── review_edit.php   # 리뷰 UPDATE 처리
+    │   ├── review_delete.php # 리뷰 DELETE 처리
+    │   │
+    │   ├── analysis_group.php  # SQL 복합 그룹핑(GROUP BY) 분석 결과 표시
+    │   ├── analysis_rollup.php # SQL ROLLUP / Drill-down 분석 결과 표시
+    │   ├── analysis_rank.php   # SQL Ranking(RANK/DENSE_RANK) 분석 결과 표시
+    │   ├── analysis_window.php # SQL Windowing Function 분석 결과 표시
+    │   │
+    │   ├── header.php        # 모든 페이지에 공통으로 포함되는 상단 메뉴 구조
+    │   └── footer.php        # 모든 페이지에 공통으로 포함되는 하단 정보
+    │
+    └── assets/
+        └── style.css         # (선택) UI/UX 개선을 위한 전역 CSS 스타일
+
 ---
 
 ## 🚀 설치 및 실행 방법
